@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filtered Orders</title>
+</head>
+<body>
+    <h1>Фильтрация заказов</h1>
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit">Применить фильтры</button>
+    </form>
+
+    {% if optimal_plans %}
+        <h2>Оптимальные комбинации:</h2>
+        {% for compound, combinations in optimal_plans.items %}
+            <h3>Состав: {{ compound }}</h3>
+            <ul>
+                {% for combination in combinations %}
+                    <li>
+                        Формат: {{ combination.format }} мм<br>
+                        Отход: {{ combination.waste }} мм<br>
+                        Заказы:
+                        <ul>
+                            {% for order in combination.orders %}
+                                <li>{{ order.client }} (Ширина: {{ order.workpiece_width }} мм)</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

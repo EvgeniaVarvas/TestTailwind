@@ -1,6 +1,7 @@
-from registry import views
 from django.urls import path
+from .views import registry_list
 
 urlpatterns = [
-    path('', views.index, name='registry-list'),
+    path('', registry_list, name='registry-list'),
+
 ]

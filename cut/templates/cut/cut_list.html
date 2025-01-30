@@ -4,7 +4,10 @@
     <h1 class="text-2xl font-bold mt-4 mb-4 text-gray-700">Список заказов</h1>
 <p class="mb-4">{% lorem %}</p>
 
-
+ <form method="get" action="{% url 'filtered_orders' %}">
+        {{ form.as_p }}
+        <button type="submit">Фильтровать</button>
+    </form>
 
     <table class="w-full text-sm bg-white text-left">
         <thead>
